@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace WebAPI.Controllers
 {
@@ -10,9 +6,7 @@ namespace WebAPI.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
-            return View();
+            return Json(new { Version = 1.0, AppName = "WebApi" }, JsonRequestBehavior.AllowGet);
         }
     }
 }
