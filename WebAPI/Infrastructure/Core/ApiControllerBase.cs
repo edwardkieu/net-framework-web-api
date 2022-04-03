@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.ViewModels;
+using System;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
@@ -46,6 +47,26 @@ namespace WebAPI.Infrastructure.Core
                 response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
             return response;
+        }
+
+        protected IHttpActionResult ApiPagedResponeSuccess(object data, int totalCount = 0, int pageNumber = 0, int pageSize = 0)
+        {
+            return Ok(new PagedResponseViewModel<object>(data, totalCount, pageNumber, pageSize));
+        }
+
+        protected IHttpActionResult ApiResponeSuccess(object data)
+        {
+            return Ok(new ResponseViewModel<object>(data));
+        }
+
+        protected IHttpActionResult ApiResponeError(object data, string message = "")
+        {
+            return Ok(new ResponseViewModel<object>(data ?? null, message ?? "BadRequest"));
+        }
+
+        protected IHttpActionResult ApiResponeForbidden(string message = "Forbidden")
+        {
+            return Ok(new ResponseViewModel<object>(message));
         }
     }
 }

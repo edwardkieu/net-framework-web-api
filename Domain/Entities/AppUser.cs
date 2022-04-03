@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Claims;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    [Table("AppUser")]
+    [Table("AppUsers", Schema = "dbo")]
     public class AppUser : IdentityUser
     {
         [MaxLength(256)]
@@ -23,6 +24,12 @@ namespace Domain.Entities
 
         public bool IsActive { get; set; }
 
+        public virtual ICollection<Department> Departments { get; set; }
+
+        public virtual ICollection<LeaveAllocation> LeaveAllocations { get; set; }
+
+        public virtual ICollection<RequestLeave> RequestLeaves { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<AppUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -34,6 +41,9 @@ namespace Domain.Entities
         public AppUser()
         {
             IsActive = true;
+            Departments = new HashSet<Department>();
+            LeaveAllocations = new HashSet<LeaveAllocation>();
+            RequestLeaves = new HashSet<RequestLeave>();
         }
     }
 }

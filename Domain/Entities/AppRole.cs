@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
-    [Table("AppRole")]
+    [Table("AppRoles")]
     public class AppRole : IdentityRole
     {
         public AppRole() : base()

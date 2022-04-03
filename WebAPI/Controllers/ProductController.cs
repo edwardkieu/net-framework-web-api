@@ -21,8 +21,7 @@ namespace WebAPI.Controllers
         public async Task<IHttpActionResult> GetAsync()
         {
             var result = await _productService.GetAllAsync();
-            var response = new ResponseViewModel<object>(result);
-            return Ok(response);
+            return ApiResponeSuccess(result);
         }
     }
 }
