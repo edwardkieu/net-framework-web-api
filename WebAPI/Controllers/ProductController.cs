@@ -1,14 +1,12 @@
 ﻿using Common.ViewModels;
 using Service.Interfaces;
-using Service.ViewModels;
-using System.Collections;
 using System.Threading.Tasks;
 using System.Web.Http;
 using WebAPI.Infrastructure.Core;
 
 namespace WebAPI.Controllers
 {
-    [RoutePrefix("api/v1/product")]
+    [RoutePrefix("api/v1/products")]
     public class ProductController : ApiControllerBase
     {
         private readonly IProductService _productService;
@@ -19,7 +17,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("get-all")]
+        [Route("")]
         public async Task<IHttpActionResult> GetAsync()
         {
             var result = await _productService.GetAllAsync();

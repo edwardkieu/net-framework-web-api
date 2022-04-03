@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Web.Http;
+using WebAPI.Filters;
 
 namespace WebAPI
 {
@@ -14,6 +15,9 @@ namespace WebAPI
             
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            // Add Custom validation filters  
+            config.Filters.Add(new ValidateModelStateFilter());
 
             // Configure Json Format
             config.Formatters.Remove(config.Formatters.XmlFormatter);
