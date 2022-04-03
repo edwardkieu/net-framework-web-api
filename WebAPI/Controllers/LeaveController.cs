@@ -16,7 +16,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("allocate/department/{departmentId}")]
+        [Route("allocations/departments/{departmentId}")]
         public async Task<IHttpActionResult> AllocateForDepartmentAsync(int departmentId)
         {
             return ApiResponeSuccess(true);
