@@ -10,11 +10,13 @@ namespace Domain.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { set; get; }
 
+        [Index("IX_LeaveAllocation_LeaveTypeId", IsClustered = false, IsUnique = false)]
         public int LeaveTypeId { get; set; }
 
         [ForeignKey("LeaveTypeId")]
         public virtual LeaveType LeaveType { get; set; }
 
+        [Index("IX_LeaveAllocation_EmployeeId", IsClustered = false, IsUnique = false)]
         public string EmployeeId { get; set; }
 
         [ForeignKey("EmployeeId")]

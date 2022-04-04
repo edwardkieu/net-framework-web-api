@@ -13,16 +13,19 @@ namespace Domain.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { set; get; }
 
+        [Index("IX_RequestLeave_LeaveTypeId", IsClustered = false, IsUnique = false)]
         public int LeaveTypeId { get; set; }
 
         [ForeignKey("LeaveTypeId")]
         public virtual LeaveType LeaveType { get; set; }
 
+        [Index("IX_RequestLeave_RequestedId", IsClustered = false, IsUnique = false)]
         public string RequestedId { get; set; }
 
         [ForeignKey("RequestedId")]
         public virtual AppUser Requested { get; set; }
 
+        [Index("IX_RequestLeave_ApprovedId", IsClustered = false, IsUnique = false)]
         public string ApprovedId { get; set; }
 
         [ForeignKey("ApprovedId")]

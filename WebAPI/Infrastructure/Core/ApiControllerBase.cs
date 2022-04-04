@@ -59,7 +59,7 @@ namespace WebAPI.Infrastructure.Core
             return Ok(new ResponseViewModel<object>(data));
         }
 
-        protected IHttpActionResult ApiResponeError(object data, string message = "")
+        protected IHttpActionResult ApiResponeBadRequest(object data, string message = "")
         {
             return Ok(new ResponseViewModel<object>(data ?? null, message ?? "BadRequest"));
         }

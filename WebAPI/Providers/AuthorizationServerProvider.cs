@@ -39,6 +39,7 @@ namespace WebAPI.Providers
                 var claimsIdentity = await userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ExternalBearer);
                 string avatar = string.IsNullOrEmpty(user.Avatar) ? "" : user.Avatar;
                 string email = string.IsNullOrEmpty(user.Email) ? "" : user.Email;
+                claimsIdentity.AddClaim(new Claim("uid", user.Id));
                 claimsIdentity.AddClaim(new Claim("fullName", user.FullName));
                 claimsIdentity.AddClaim(new Claim("avatar", avatar));
                 claimsIdentity.AddClaim(new Claim("email", email));
@@ -47,6 +48,7 @@ namespace WebAPI.Providers
                 //identity.AddClaim(new Claim("permissions", JsonConvert.SerializeObject(permissionViewModels)));
                 var props = new AuthenticationProperties(new Dictionary<string, string>
                     {
+                        {"uid", user.Id},
                         {"fullName", user.FullName},
                         {"avatar", avatar },
                         {"email", email},

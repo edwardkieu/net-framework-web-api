@@ -11,6 +11,18 @@ namespace Data.Infrastructure
 
         public IProductRepository ProductRepository => new ProductRepository(_dbContext);
 
+        public IDepartmentRepository DepartmentRepository => new DepartmentRepository(_dbContext);
+
+        public ILeaveAllocationRepository LeaveAllocationRepository => new LeaveAllocationRepository(_dbContext);
+
+        public ILeaveTypeRepository LeaveTypeRepository => new LeaveTypeRepository(_dbContext);
+
+        public IRequestLeaveRepository RequestLeaveRepository => new RequestLeaveRepository(_dbContext);
+
+        public IRequestLeaveCommentRepository RequestLeaveCommentRepository => new RequestLeaveCommentRepository(_dbContext);
+
+        public IAppUserRepository AppUserRepository => new AppUserRepository(_dbContext);
+
         public UnitOfWork(AppDbContext dbContext)
         {
             _dbContext = dbContext;

@@ -48,6 +48,7 @@
     <Compile Include="Constants\SettingsConstant.cs" />
     <Compile Include="Constants\StringConstant.cs" />
     <Compile Include="Enums\RequestLeaveStatus.cs" />
+    <Compile Include="Helpers\IdentityHelper.cs" />
     <Compile Include="Helpers\ResponseMessageHelper.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Helpers\StringHelper.cs" />

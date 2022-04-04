@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
 using WebAPI.Filters;
 
 namespace WebAPI
@@ -18,6 +19,12 @@ namespace WebAPI
 
             // Add Custom validation filters  
             config.Filters.Add(new ValidateModelStateFilter());
+
+            // exception for action scope
+            config.Filters.Add(new CustomExceptionFilter());
+
+            // global scope
+            //config.Services.Replace(typeof(IExceptionHandler), new GlobalExceptionHandler());
 
             // Configure Json Format
             config.Formatters.Remove(config.Formatters.XmlFormatter);

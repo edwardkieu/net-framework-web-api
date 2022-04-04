@@ -12,7 +12,7 @@ namespace WebAPI.Filters
             if (!actionContext.ModelState.IsValid)
             {
                 //actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest, actionContext.ModelState);
-                actionContext.Response = ResponseMessageHelper.CreateResponse(HttpStatusCode.BadRequest, actionContext.ModelState);
+                //actionContext.Response = ResponseMessageHelper.CreateResponse(HttpStatusCode.BadRequest, actionContext.ModelState);
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Common.ViewModels;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -14,7 +15,7 @@ namespace Common.Helpers
             var responseMessage = new HttpResponseMessage()
             {
                 StatusCode = statusCode,
-                Content = new StringContent(JsonConvert.SerializeObject(response))
+                Content = new StringContent(JsonConvert.SerializeObject(response, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() })),
             };
             responseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 

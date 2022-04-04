@@ -79,7 +79,7 @@ namespace Data.Infrastructure
             return await _dbSet.FirstOrDefaultAsync(predicate);
         }
 
-        public virtual async Task<List<T>> FindBy(Expression<Func<T, bool>> predicate, bool isAsNoTracking = false)
+        public virtual async Task<List<T>> FindByAsync(Expression<Func<T, bool>> predicate, bool isAsNoTracking = false)
         {
             var query = _dbSet.Where(predicate);
             if (isAsNoTracking)
@@ -88,7 +88,7 @@ namespace Data.Infrastructure
             return await query.ToListAsync();
         }
 
-        public virtual async Task<List<T>> FindBy(Expression<Func<T, bool>> predicate, bool isAsNoTracking = false, params Expression<Func<T, object>>[] includeProperties)
+        public virtual async Task<List<T>> FindByAsync(Expression<Func<T, bool>> predicate, bool isAsNoTracking = false, params Expression<Func<T, object>>[] includeProperties)
         {
             IQueryable<T> query = _dbSet;
             foreach (var includeProperty in includeProperties)

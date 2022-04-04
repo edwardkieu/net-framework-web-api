@@ -60,6 +60,12 @@
     <Compile Include="AppDbContext.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Interfaces\IAppUserRepository.cs" />
+    <Compile Include="Interfaces\IRequestLeaveCommentRepository.cs" />
+    <Compile Include="Interfaces\IRequestLeaveRepository.cs" />
+    <Compile Include="Interfaces\ILeaveAllocationRepository.cs" />
+    <Compile Include="Interfaces\IDepartmentRepository.cs" />
+    <Compile Include="Interfaces\ILeaveTypeRepository.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
@@ -67,8 +73,22 @@
     <Compile Include="Migrations\202204030800265_Initalize_Db.designer.cs">
       <DependentUpon>202204030800265_Initalize_Db.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204031429422_Create_Index.cs" />
+    <Compile Include="Migrations\202204031429422_Create_Index.designer.cs">
+      <DependentUpon>202204031429422_Create_Index.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204031540436_Create_Index1.cs" />
+    <Compile Include="Migrations\202204031540436_Create_Index1.designer.cs">
+      <DependentUpon>202204031540436_Create_Index1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AppUserRepository.cs" />
+    <Compile Include="Repositories\RequestLeaveCommentRepository.cs" />
+    <Compile Include="Repositories\RequestLeaveRepository.cs" />
+    <Compile Include="Repositories\LeaveAllocationRepository.cs" />
+    <Compile Include="Repositories\DepartmentRepository.cs" />
+    <Compile Include="Repositories\LeaveTypeRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +108,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202204030800265_Initalize_Db.resx">
       <DependentUpon>202204030800265_Initalize_Db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204031429422_Create_Index.resx">
+      <DependentUpon>202204031429422_Create_Index.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204031540436_Create_Index1.resx">
+      <DependentUpon>202204031540436_Create_Index1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -14,6 +14,7 @@ namespace Domain.Entities
         [MaxLength(500)]
         public string Comment { set; get; }
 
+        [Index("IX_RequestLeaveComment_RequestLeaveId", IsClustered = false, IsUnique = true)]
         public int RequestLeaveId { get; set; }
 
         [ForeignKey("RequestLeaveId")]

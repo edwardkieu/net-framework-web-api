@@ -35,9 +35,9 @@ namespace Data.Interfaces
 
         IQueryable<T> GetAllQuery(bool isAsNoTracking = false, params Expression<Func<T, object>>[] includeProperties);
 
-        Task<List<T>> FindBy(Expression<Func<T, bool>> predicate, bool isAsNoTracking = false);
+        Task<List<T>> FindByAsync(Expression<Func<T, bool>> predicate, bool isAsNoTracking = false);
 
-        Task<List<T>> FindBy(Expression<Func<T, bool>> predicate, bool isAsNoTracking = false, params Expression<Func<T, object>>[] includeProperties);
+        Task<List<T>> FindByAsync(Expression<Func<T, bool>> predicate, bool isAsNoTracking = false, params Expression<Func<T, object>>[] includeProperties);
 
         Task<int> CountAsync(Expression<Func<T, bool>> predicate);
     }

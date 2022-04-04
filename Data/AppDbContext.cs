@@ -1,8 +1,10 @@
-﻿using Domain.Abstract;
+﻿using Common.Helpers;
+using Domain.Abstract;
 using Domain.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -47,46 +49,22 @@ namespace Data
 
         public override int SaveChanges()
         {
-            if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
-            {
-                var modifiedEntries = ChangeTracker
-                .Entries()
-                .Where(x => x.Entity is Auditable && (x.State == EntityState.Added || x.State == EntityState.Modified));
-
-                foreach (var entry in modifiedEntries)
-                {
-                    var entity = entry.Entity as Auditable;
-                    if (entity != null)
-                    {
-                        string identityName = Thread.CurrentPrincipal.Identity.Name;
-                        var now = DateTime.UtcNow;
-
-                        if (entry.State == EntityState.Added)
-                        {
-                            entity.CreatedBy = identityName;
-                            entity.CreatedDate = now;
-                        }
-                        else
-                        {
-                            base.Entry(entity).Property(x => x.CreatedBy).IsModified = false;
-                            base.Entry(entity).Property(x => x.CreatedDate).IsModified = false;
-                        }
-
-                        entity.UpdatedBy = identityName;
-                        entity.UpdatedDate = now;
-                    }
-                }
-            }
-
+            UpdateAuditableEntity(ChangeTracker);
             return base.SaveChanges();
         }
 
-        public override Task<int> SaveChangesAsync()
+        public override async Task<int> SaveChangesAsync()
+        {
+            UpdateAuditableEntity(ChangeTracker);
+            return await base.SaveChangesAsync();
+        }
+
+        private void UpdateAuditableEntity(DbChangeTracker dbChangeTracker)
         {
             if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
             {
-
-                var modifiedEntries = ChangeTracker
+                var identityId = IdentityHelper.GetClaimType("uid");
+                var modifiedEntries = dbChangeTracker
                 .Entries()
                 .Where(x => x.Entity is Auditable && (x.State == EntityState.Added || x.State == EntityState.Modified));
 
@@ -95,12 +73,11 @@ namespace Data
                     var entity = entry.Entity as Auditable;
                     if (entity != null)
                     {
-                        string identityName = Thread.CurrentPrincipal.Identity.Name;
                         var now = DateTime.UtcNow;
 
                         if (entry.State == EntityState.Added)
                         {
-                            entity.CreatedBy = identityName;
+                            entity.CreatedBy = identityId;
                             entity.CreatedDate = now;
                         }
                         else
@@ -109,13 +86,11 @@ namespace Data
                             base.Entry(entity).Property(x => x.CreatedDate).IsModified = false;
                         }
 
-                        entity.UpdatedBy = identityName;
+                        entity.UpdatedBy = identityId;
                         entity.UpdatedDate = now;
                     }
                 }
             }
-
-            return base.SaveChangesAsync();
         }
     }
 }

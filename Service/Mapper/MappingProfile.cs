@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Entities;
 using Service.ViewModels;
+using System.Linq;
 
 namespace Service.Mapper
 {
@@ -9,14 +10,8 @@ namespace Service.Mapper
         public MappingProfile()
         {
             CreateMap<ProductViewModel, Product>().ReverseMap();
+            CreateMap<RequestLeave, RequestLeaveViewModel>().ForMember(des => des.Comment, source => source.MapFrom(f => f.Comments.Select(x => x.Comment).FirstOrDefault()));
+            CreateMap<RequestLeaveViewModel, RequestLeave>();
         }
-
-        //public static void Configure()
-        //{
-        //    AutoMapper.Mapper.Initialize(config =>
-        //    {
-        //        config.CreateMap<Product, ProductViewModel>().ReverseMap();
-        //    });
-        //}
     }
 }

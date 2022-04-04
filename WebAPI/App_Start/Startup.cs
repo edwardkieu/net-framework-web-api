@@ -59,7 +59,7 @@ namespace WebAPI.App_Start
             builder.RegisterAssemblyTypes(typeof(ProductService).Assembly)
                .Where(t => t.Name.EndsWith("Service"))
                .AsImplementedInterfaces().InstancePerRequest();
-
+           
             //Set the WebApi DependencyResolver
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(builder.Build());
         }
