@@ -64,6 +64,12 @@ namespace Data.Infrastructure
                 _dbSet.RemoveRange(objects);
         }
 
+        public virtual void DeleteRange(IEnumerable<T> entities)
+        {
+            if (entities.Any())
+                _dbSet.RemoveRange(entities);
+        }
+
         public virtual async Task<T> FindByIdAsync(object id)
         {
             return await _dbSet.FindAsync(id);

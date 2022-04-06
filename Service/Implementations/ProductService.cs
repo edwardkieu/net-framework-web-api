@@ -10,9 +10,9 @@ namespace Service.Implementations
 {
     public class ProductService : IProductService
     {
-
         private IUnitOfWork _unitOfWork;
         private IMapper _mapper;
+
         public ProductService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
@@ -22,7 +22,8 @@ namespace Service.Implementations
         public async Task<ProductViewModel> AddAsync(ProductViewModel vm)
         {
             var product = _mapper.Map<Product>(vm);
-            await _unitOfWork.SaveChangesAsync();
+            _unitOfWork.ProductRepository.Add(product);
+             await _unitOfWork.SaveChangesAsync();
 
             return _mapper.Map<ProductViewModel>(product);
         }

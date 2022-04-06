@@ -12,6 +12,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.DataProtection;
 using Owin;
 using Service.Implementations;
+using Service.Interfaces;
 using Service.Mapper;
 using System.Reflection;
 using System.Web;

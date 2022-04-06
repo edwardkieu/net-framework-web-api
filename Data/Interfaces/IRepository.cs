@@ -26,6 +26,8 @@ namespace Data.Interfaces
         //Delete multi records
         void DeleteRange(Expression<Func<T, bool>> predicate);
 
+        void DeleteRange(IEnumerable<T> entities);
+
         // Get an entity by int id
         Task<T> FindByIdAsync(object id);
 

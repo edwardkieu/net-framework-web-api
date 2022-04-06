@@ -63,8 +63,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\EntityService.cs" />
     <Compile Include="Implementations\LeaveService.cs" />
     <Compile Include="Implementations\ProductService.cs" />
+    <Compile Include="Interfaces\IEntityService.cs" />
     <Compile Include="Interfaces\ILeaveService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
     <Compile Include="Mapper\MappingProfile.cs" />

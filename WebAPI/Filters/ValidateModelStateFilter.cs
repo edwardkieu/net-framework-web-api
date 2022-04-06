@@ -1,5 +1,5 @@
-﻿using Common.Helpers;
-using System.Net;
+﻿using System.Net;
+using System.Net.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 
@@ -11,8 +11,7 @@ namespace WebAPI.Filters
         {
             if (!actionContext.ModelState.IsValid)
             {
-                //actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest, actionContext.ModelState);
-                //actionContext.Response = ResponseMessageHelper.CreateResponse(HttpStatusCode.BadRequest, actionContext.ModelState);
+                actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest, actionContext.ModelState);
             }
         }
     }

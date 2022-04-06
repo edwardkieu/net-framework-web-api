@@ -23,11 +23,14 @@ namespace Data
             return new AppDbContext();
         }
 
+        public DbSet<Product> Products { set; get; }
         public DbSet<Department> Departments { set; get; }
         public DbSet<LeaveType> LeaveTypes { set; get; }
         public DbSet<LeaveAllocation> LeaveAllocations { set; get; }
         public DbSet<RequestLeave> RequestLeaves { set; get; }
         public DbSet<RequestLeaveComment> RequestLeaveComments { set; get; }
+        public DbSet<AppRole> AppRoles { set; get; }
+        public DbSet<IdentityUserRole> UserRoles { set; get; }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
@@ -53,10 +56,10 @@ namespace Data
             return base.SaveChanges();
         }
 
-        public override async Task<int> SaveChangesAsync()
+        public override Task<int> SaveChangesAsync()
         {
             UpdateAuditableEntity(ChangeTracker);
-            return await base.SaveChangesAsync();
+            return base.SaveChangesAsync();
         }
 
         private void UpdateAuditableEntity(DbChangeTracker dbChangeTracker)

@@ -22,5 +22,10 @@ namespace Service.ViewModels
         public string UpdatedBy { set; get; }
 
         public bool IsActive { set; get; }
+
+        public ProductViewModel()
+        {
+            IsActive = true;
+        }
     }
 }

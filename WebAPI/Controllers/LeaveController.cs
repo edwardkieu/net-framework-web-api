@@ -1,4 +1,5 @@
 ﻿using Common.Enums;
+using Microsoft.AspNet.Identity;
 using Service.Interfaces;
 using Service.ViewModels;
 using System.Threading.Tasks;

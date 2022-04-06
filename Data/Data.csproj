@@ -81,6 +81,14 @@
     <Compile Include="Migrations\202204031540436_Create_Index1.designer.cs">
       <DependentUpon>202204031540436_Create_Index1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204041319404_Add_UserRole.cs" />
+    <Compile Include="Migrations\202204041319404_Add_UserRole.designer.cs">
+      <DependentUpon>202204041319404_Add_UserRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204060336228_add_product_to_context.cs" />
+    <Compile Include="Migrations\202204060336228_add_product_to_context.designer.cs">
+      <DependentUpon>202204060336228_add_product_to_context.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AppUserRepository.cs" />
@@ -114,6 +122,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204031540436_Create_Index1.resx">
       <DependentUpon>202204031540436_Create_Index1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204041319404_Add_UserRole.resx">
+      <DependentUpon>202204041319404_Add_UserRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204060336228_add_product_to_context.resx">
+      <DependentUpon>202204060336228_add_product_to_context.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

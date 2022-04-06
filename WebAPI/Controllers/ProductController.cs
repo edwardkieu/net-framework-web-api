@@ -1,5 +1,5 @@
-﻿using Common.ViewModels;
-using Service.Interfaces;
+﻿using Service.Interfaces;
+using Service.ViewModels;
 using System.Threading.Tasks;
 using System.Web.Http;
 using WebAPI.Infrastructure.Core;
@@ -17,10 +17,18 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("")]
+        [Route()]
         public async Task<IHttpActionResult> GetAsync()
         {
             var result = await _productService.GetAllAsync();
+            return ApiResponeSuccess(result);
+        }
+
+        [HttpPost]
+        [Route()]
+        public async Task<IHttpActionResult> PostAsync([FromBody] ProductViewModel vm)
+        {
+            var result = await _productService.AddAsync(vm);
             return ApiResponeSuccess(result);
         }
     }
